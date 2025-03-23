@@ -1,12 +1,10 @@
-import Image from "next/image";
-
+import Navbar from "@/components/navbar";
+import App from "@/components/app";
 export default function Home() {
   return (
-    <div>
-      <h1>Bitlink</h1>
-      <p>Generate short links with ease.</p>
-      <p>Powered by Next.js</p>
-      <a href="/shorten">Create a Short Link</a>
+    <div className="gr-bg w-[100vw] h-[100vh] py-3 lg:py-5 lg:px-20">
+      <Navbar />
+      <App />
     </div>
    
   );

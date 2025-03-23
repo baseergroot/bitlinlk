@@ -1,9 +1,10 @@
 import connectDB from '@/lib/mongodb';
 
 export async function POST(request) {
+
   const body = await request.json();
   const { url, shortUrl } = body;
-  console.log("body is :", url,shortUrl) 
+ // console.log("body is :", url,shortUrl) 
   const client = await connectDB();
   const db = client.db;
   const collection = db.collection('url');
