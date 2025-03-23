@@ -7,9 +7,14 @@ import axios from "axios";
 const Shorten = () => {
   const [url, setUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
+  const [link, setLink] = useState('');
+  const [generated, setGenerated] = useState('')
 
   const submit = () => {
+    const genUrl = `http://localhost:3000/${shortUrl}`
+    setLink(genUrl)
     console.log(url,shortUrl)
+    setGenerated(genUrl)
     axios.post('/api/shorturl', {
       url: url,
       shortUrl: shortUrl
@@ -27,21 +32,26 @@ const Shorten = () => {
         <input 
         className="bg-amber-600 rounded-xl px-4 py-2 w-[80%]"
         type="text" 
-        placeholder="Enter Url" 
+        placeholder="Enter Url ex. https://www.google.com" 
         onChange={(e) => {setUrl(e.target.value)}} />
 
         <input 
         className="bg-amber-600 rounded-xl px-4 py-2 w-[80%]"
         type="text" 
-        placeholder="Enter Url" 
+        placeholder="Enter Name ex. nomi or google"
         onChange={(e) => {setShortUrl(e.target.value)}} />
 
         <button 
         onClick={submit}
-        className="bg-green-700 rounded-xl px-4 py-2 my-2 text-white">Shorten</button>
+        className="bg-green-700 rounded-xl px-4 py-2 my-2 text-white" >Shorten</button>
 
-        <p className="font-bold">Your Short Url:</p>
-        <Link href={"/"}>Shorten</Link>
+{generated  && (
+  <>
+    <p className="font-bold">Your Short Url:</p>
+    <code><a target="_blank" rel="noopener noreferrer" href={generated}>{generated}</a></code>
+  </>
+)}
+
 
       </main>
     </div>

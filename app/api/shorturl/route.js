@@ -1,27 +1,30 @@
-import { NextResponse } from "next/server";
-import mongoose from "mongoose";
+import connectDB from '@/lib/mongodb';
 
-export async function POST(req) {
-  const hostaAddress = "http;//localhost:3000"
-  const body = await req.json();
+export async function POST(request) {
+  const body = await request.json();
   const { url, shortUrl } = body;
-  console.log(body);
-  console.log(url, shortUrl);
+  console.log("body is :", url,shortUrl) 
+  const client = await connectDB();
+  const db = client.db;
+  const collection = db.collection('url');
 
-  return NextResponse.json({ url, shortUrl });
+  // Check if the short url exists
+  const doc = await collection.findOne({ shorturl : shortUrl  });
+  if (doc) {
+    return Response.json({ success: false, error: true, message: 'URL already exists!' });
+  }
+
+  const result = await collection.insertOne({
+    url: body.url,
+    shorturl: body.shortUrl,
+  });
+  console.log('insertion is : ', result);
+
+  const  savedData = await collection.findOne({
+    url: url,
+    shorturl: shortUrl
+  })
+  console.log('savedData is : ', savedData);
+
+  return Response.json({ success: true, error: false, message: 'URL Generated Successfully' });
 }
-
-//   try {
-//     const username = "psab99";
-//     const connected = await mongoose.connect(
-//       "mongodb+srv://admin:admin@todo.okycf.mongodb.net/?retryWrites=true&w=majority&appName=Todo"
-//     );
-//     console.log("mongogb connected successfully");
-//     const user = await mongoose.connection.db
-//       .collection("forms")
-//       .findOne({ username });
-//     return NextResponse.json({ user });
-//     console.log(user);
-//   } catch (error) {
-//     console.log(error);
-//   }
