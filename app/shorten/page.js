@@ -11,7 +11,8 @@ const Shorten = () => {
   const [generated, setGenerated] = useState('')
 
   const submit = () => {
-    const genUrl = process.env.NEXT_PUBLIC_HOST/shortUrl
+    const genUrl = `${process.env.NEXT_PUBLIC_HOST}/${shortUrl}`
+    console.log(genUrl)
     setLink(genUrl)
     console.log(url,shortUrl)
     setGenerated(genUrl)
