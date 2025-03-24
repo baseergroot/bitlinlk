@@ -5,8 +5,8 @@ const App = () => {
   return (
     <>
     <div className='w-[90vw] bg-blue-200/30 mx-auto mt-20 lg:mt-30 md:mt-30 py-5 px-5 text-center rounded-2xl'>
-      <h1 className='text-3xl font-bold pb-10'>Bitlink</h1>
-      <p className='font-bold text-white'>Welcome to Bitlink, a simple URL shortener.</p>
+      <h1 className='text-3xl font-bold pb-10'>Grootly</h1>
+      <p className='font-bold text-white'>Welcome to Grootly, a simple URL shortener.</p>
       <p className='text-white py-3'>Quickly shorten and customize your URLs with ease. Our tool allows you to create user-friendly, memorable links for sharing across the web, all in a simple and efficient interface.</p>
     </div>
     <div>
@@ -17,7 +17,7 @@ const App = () => {
     </div>
     {/* Footer */}
   <footer className='pt-10 mt-10 lg:mt-30'>
-    <p className='text-gray-100 text-center'>&copy; 2025 Bitlink. All rights reserved.</p>
+    <p className='text-gray-100 text-center'>&copy; 2025 Grootly. All rights reserved.</p>
   </footer>
     </>
   )

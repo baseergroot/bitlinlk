@@ -3,7 +3,7 @@ import "./globals.css";
 import 'remixicon/fonts/remixicon.css'
 
 export const metadata = {
-  title: "Bitlink",
+  title: "Grootly",
   description: "Generate Short Link",
 };
 

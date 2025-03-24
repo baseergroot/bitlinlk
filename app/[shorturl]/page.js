@@ -8,7 +8,7 @@ export default async function Page({ params }) {
     const client = await connectDB();
     const db = client.db
     const collection = db.collection("url")
-
+ 
     const doc = await collection.findOne({shorturl: shorturl})
     console.log("doc is :", doc)
     if (doc) {
